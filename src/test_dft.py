@@ -12,3 +12,19 @@ def test_in_order() -> None:
     res = list(in_order(tree))
     assert res == [1, 2, 3, 4, 5]
     assert list(in_order(None)) == []
+
+    tree = T(4, T(2, T(1, None, None), T(3, None, None)), T(6, T(5, None, None), T(7, None, None)))
+    res = list(in_order(tree))
+    assert res == [1, 2, 3, 4, 5, 6, 7]
+
+    tree = T(1, None, None)
+    res = list(in_order(tree))
+    assert res == [1]
+
+    tree = T(4, T(2, T(1, None, None), T(3, None, None)), None)
+    res = list(in_order(tree))
+    assert res == [1, 2, 3, 4]
+
+    tree = T(4, T(1, None, T(3, T(2, None, None), None)), None)
+    res = list(in_order(tree))
+    assert res == [1, 2, 3, 4]

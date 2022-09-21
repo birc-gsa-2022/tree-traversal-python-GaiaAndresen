@@ -10,3 +10,11 @@ def test_in_order() -> None:
     res = list(bf_order(tree))
     assert res == [2, 1, 4, 3, 5]
     assert list(bf_order(None)) == []
+
+    tree = T(1, None, None)
+    res = list(bf_order(tree))
+    assert res == [1]
+
+    tree = T(1, T(2, None, T(3, None, None)), None)
+    res = list(bf_order(tree))
+    assert res == [1, 2, 3]
