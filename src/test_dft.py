@@ -28,3 +28,20 @@ def test_in_order() -> None:
     tree = T(4, T(1, None, T(3, T(2, None, None), None)), None)
     res = list(in_order(tree))
     assert res == [1, 2, 3, 4]
+
+
+    tree = T(0, None, None)
+    res = list(in_order(tree))
+    assert res == [0]
+
+    tree = T(0, T(1, None, None), T(0, None, None))
+    res = list(in_order(tree))
+    assert res == [1, 0, 0]
+
+    tree = T(0, T(0, None, None), T(0, None, None))
+    res = list(in_order(tree))
+    assert res == [0, 0, 0]
+
+    tree = T(0, T(0, T(0,None,None), None), T(0, None, None))
+    res = list(in_order(tree))
+    assert res == [0, 0, 0, 0]

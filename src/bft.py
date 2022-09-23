@@ -12,12 +12,9 @@ def bf_order(t: T | None) -> Iterable[int]:
     >>> list(bf_order(tree))
     [2, 1, 4, 3, 5]
     """
-    queue = deque()
-    output = []
-    if not t:
-        return []
-    queue.append(t)
-    while len(queue) > 0:
+
+    output, queue = [], deque([t] if t else [])
+    while queue:
         node = queue.popleft()
         output.append(node.val)
         if node.left:
